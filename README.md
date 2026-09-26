@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Shri Unity Ispat — Website
 
-## Getting Started
+Premium B2B catalogue website for **Shri Unity Ispat** (Iron & Steel — The Complete Solution), Akhari Bypass Amra, Varanasi.
 
-First, run the development server:
+Built with Next.js 16 (App Router, Turbopack), TypeScript, Tailwind CSS 4, GSAP (ScrollTrigger, SplitText), Framer Motion and Lucide icons.
+
+## Run
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build && npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Copy `.env.example` to `.env.local` and configure a quote-form provider (Resend or Formspree).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Where things live
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Path | Purpose |
+| --- | --- |
+| `lib/site.ts` | Confirmed business details (address, phones, email, WhatsApp, map). Single source of truth. |
+| `lib/images.ts` | Central image registry — every photo, its alt text and source/licence. `stockyardGallery` controls the stockyard gallery. |
+| `data/categories.ts` | 12 product families (copy, imagery, applications). |
+| `data/products.ts` | Every product: specs, grades, standards, brands, availability. Pages are generated from this. |
+| `data/brands.ts` | Brands we deal in. Add `logo` once official logo usage is approved. |
+| `data/industries.ts` | Industries + application → image mapping. |
+| `app/api/quote/route.ts` | Quote endpoint (Resend → Formspree → WhatsApp/email fallback). |
 
-## Learn More
+### Availability
 
-To learn more about Next.js, take a look at the following resources:
+Each product has `availability`: `"in-stock"`, `"available"` or `"on-request"`. Nothing is marked **In Stock** until the client confirms current stock — change the value in `data/products.ts`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Replacing photography with the client's own
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Put files in `public/images/stockyard/`.
+2. Register each in `lib/images.ts` (`src`, `width`, `height`, `alt`, `source`).
+3. Reference the key in `stockyardGallery` (or anywhere an `ImageKey` is used).
 
-## Deploy on Vercel
+Current photography comes from Unsplash and Wikimedia Commons — see `/credits`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Notes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- No login, cart or checkout — conversion is Request a Quote, Call, WhatsApp, Email and Directions.
+- Brand names are shown as "Brands we deal in"; no authorised-dealer claims.
+- Motion respects `prefers-reduced-motion`; heavy scroll effects (pinning, horizontal travel) run on desktop only.
