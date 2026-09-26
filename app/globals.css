@@ -10,13 +10,13 @@
   --color-line: #e2ddd2;
   --color-line-strong: #cfc8ba;
   --color-silver: #c9ced4;
-  --color-steel: #8a929c;
-  --color-steel-dark: #5d6570;
+  --color-steel: #626a73;
+  --color-steel-dark: #4d5560;
   --color-graphite: #2b3038;
   --color-ink: #121c2b;
   --color-navy: #0f1d31;
   --color-navy-2: #172a45;
-  --color-gold: #b08a3e;
+  --color-gold: #8a6a27;
   --color-gold-soft: #d8b86a;
   --color-gold-pale: #f1e6c8;
   --color-success: #2f6b4f;
@@ -40,6 +40,20 @@
   @keyframes marquee {
     from { transform: translate3d(0, 0, 0); }
     to { transform: translate3d(-50%, 0, 0); }
+  }
+  @keyframes tload {
+    0% { transform: scaleX(0); transform-origin: left; }
+    50% { transform: scaleX(1); transform-origin: left; }
+    51% { transform: scaleX(1); transform-origin: right; }
+    100% { transform: scaleX(0); transform-origin: right; }
+  }
+  @keyframes heroBar {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+  @keyframes kenburns {
+    from { transform: scale(1.12); }
+    to { transform: scale(1); }
   }
   @keyframes scrollcue {
     0% { transform: translateY(-100%); }
@@ -222,4 +236,46 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
   }
+}
+
+/* First-visit preloader: hidden on repeat visits and for reduced motion */
+.intro-skip #preloader { display: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  #preloader { display: none !important; }
+}
+
+/* Never allow sideways scrolling on small screens */
+html, body { overflow-x: clip; }
+
+/* Scroll reveals (see components/ui/Reveal.tsx). Only hidden once JS has booted,
+   so content is always visible without JavaScript. */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, var(--ry, 28px), 0);
+  transition:
+    opacity 1s cubic-bezier(0.16, 1, 0.3, 1) var(--rd, 0s),
+    transform 1s cubic-bezier(0.16, 1, 0.3, 1) var(--rd, 0s);
+}
+.js [data-mask] {
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path 1.3s cubic-bezier(0.65, 0, 0.35, 1) var(--rd, 0s);
+}
+.js [data-reveal].is-in { opacity: 1; transform: none; }
+.js [data-mask].is-in { clip-path: inset(0 0 0 0); }
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal], .js [data-mask] { opacity: 1; transform: none; clip-path: none; }
+}
+
+/* Phones: lighter effects for smooth scrolling on mid-range devices */
+@media (max-width: 1023px) {
+  .grain::after { display: none; }
+  .js [data-split] {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .js [data-split].is-in { opacity: 1; transform: none; }
+}
+@media (max-width: 1023px) and (prefers-reduced-motion: reduce) {
+  .js [data-split] { opacity: 1; transform: none; }
 }

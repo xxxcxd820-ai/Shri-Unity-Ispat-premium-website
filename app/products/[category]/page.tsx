@@ -16,7 +16,7 @@ import { Parallax } from "@/components/ui/Parallax";
 import { LinkButton } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { Availability } from "@/components/ui/Availability";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, itemListJsonLd, JsonLd } from "@/lib/seo";
 import { whatsappHref } from "@/lib/site";
 import { productHref } from "@/lib/utils";
 
@@ -228,6 +228,7 @@ export default async function CategoryPage(props: PageProps<"/products/[category
       </section>
 
       <QuoteSection index={c.index} defaultCategory={c.slug} />
+      <JsonLd data={itemListJsonLd(c.name, list.map((p) => ({ name: p.name, path: productHref(c.slug, p.slug) })))} />
     </>
   );
 }

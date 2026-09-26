@@ -22,7 +22,8 @@ export function SplitHeading({ children, as: Tag = "h2", className, immediate = 
       const el = ref.current;
       if (!el) return;
       const mm = gsap.matchMedia();
-      mm.add(MQ.motion, () => {
+      // Line-splitting is desktop-only; phones get a light CSS fade (see [data-split] in globals.css).
+      mm.add(MQ.desktopMotion, () => {
         let split: SplitText | undefined;
         let cancelled = false;
         document.fonts.ready.then(() => {
@@ -50,7 +51,7 @@ export function SplitHeading({ children, as: Tag = "h2", className, immediate = 
   );
 
   return (
-    <Tag ref={ref} className={className} id={id}>
+    <Tag ref={ref} className={className} id={id} data-split>
       {children}
     </Tag>
   );

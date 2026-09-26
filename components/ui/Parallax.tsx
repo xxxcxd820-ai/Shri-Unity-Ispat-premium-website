@@ -20,7 +20,7 @@ export function Parallax({
       const el = ref.current;
       if (!el) return;
       const mm = gsap.matchMedia();
-      mm.add(MQ.motion, () => {
+      mm.add(MQ.desktopMotion, () => {
         gsap.fromTo(
           el,
           { yPercent: -amount / 2 },

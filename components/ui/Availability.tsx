@@ -1,4 +1,4 @@
-import { availabilityLabel, type Availability as A } from "@/data/products";
+import { availabilityLabel, type Availability as A } from "@/data/availability";
 import { cn } from "@/lib/utils";
 
 const dot: Record<A, string> = {

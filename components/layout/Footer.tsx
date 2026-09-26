@@ -33,7 +33,7 @@ export function Footer() {
           <div className="flex flex-wrap gap-3 lg:col-span-4 lg:justify-end">
             <Link
               href="/quote"
-              className="group inline-flex h-13 items-center gap-3 bg-gold px-7 text-[0.7rem] font-semibold tracking-[0.2em] text-white uppercase transition-colors hover:bg-[#9a7733]"
+              className="group inline-flex h-13 items-center gap-3 bg-gold px-7 text-[0.7rem] font-semibold tracking-[0.2em] text-white uppercase transition-colors hover:bg-[#735820]"
             >
               Request a Quote <Arrow />
             </Link>

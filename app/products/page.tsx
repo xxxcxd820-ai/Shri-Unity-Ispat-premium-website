@@ -45,7 +45,7 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      <section aria-labelledby="families-title" className="bg-ivory py-24 md:py-32">
+      <section aria-labelledby="families-title" className="bg-ivory py-20 md:py-32">
         <div className="container-x">
           <SectionHead
             label="Browse by family"

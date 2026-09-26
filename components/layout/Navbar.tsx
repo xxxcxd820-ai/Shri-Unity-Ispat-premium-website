@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { Phone, X } from "lucide-react";
 import { nav, site, telHref } from "@/lib/site";
 import { cn } from "@/lib/utils";
@@ -55,7 +55,7 @@ export function Navbar() {
           "fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,color,backdrop-filter] duration-500",
           light
             ? "border-b border-white/10 bg-transparent text-white"
-            : "border-b border-line/80 bg-paper/80 text-navy backdrop-blur-xl backdrop-saturate-150",
+            : "border-b border-line/80 bg-paper/95 text-navy lg:bg-paper/80 lg:backdrop-blur-md",
         )}
       >
         <div className="container-x flex h-[var(--header-h)] items-center justify-between gap-6">
@@ -117,14 +117,14 @@ export function Navbar() {
             >
               <AnimatePresence initial={false} mode="wait">
                 {open ? (
-                  <motion.span key="x" initial={{ rotate: -45, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ opacity: 0 }}>
+                  <m.span key="x" initial={{ rotate: -45, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ opacity: 0 }}>
                     <X className="size-6" />
-                  </motion.span>
+                  </m.span>
                 ) : (
-                  <motion.span key="m" className="flex flex-col gap-[7px]" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+                  <m.span key="m" className="flex flex-col gap-[7px]" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                     <span className="block h-px w-7 bg-current" />
                     <span className="block h-px w-5 self-end bg-current" />
-                  </motion.span>
+                  </m.span>
                 )}
               </AnimatePresence>
             </button>

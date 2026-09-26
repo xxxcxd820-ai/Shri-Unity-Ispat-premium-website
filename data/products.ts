@@ -13,7 +13,8 @@ import type { ImageKey } from "@/lib/images";
  * mill-specific is phrased as "on request" rather than invented.
  */
 
-export type Availability = "in-stock" | "available" | "on-request";
+import type { Availability } from "./availability";
+export { availabilityLabel, type Availability } from "./availability";
 
 export type Spec = { label: string; value: string };
 
@@ -40,11 +41,6 @@ export type Product = {
   keywords?: string[];
 };
 
-export const availabilityLabel: Record<Availability, string> = {
-  "in-stock": "In Stock",
-  available: "Available",
-  "on-request": "Available on Request",
-};
 
 const CUSTOM = "Share size, grade and quantity for a tailored quote";
 

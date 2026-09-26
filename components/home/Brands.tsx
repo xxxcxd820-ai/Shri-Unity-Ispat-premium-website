@@ -4,7 +4,7 @@ import { LinkButton } from "@/components/ui/Button";
 
 export function Brands({ index = "08" }: { index?: string }) {
   return (
-    <section aria-labelledby="brands-title" className="border-y border-line bg-ivory py-24 md:py-32">
+    <section aria-labelledby="brands-title" className="border-y border-line bg-ivory py-20 md:py-32">
       <div className="container-x">
         <SectionHead
           index={index}

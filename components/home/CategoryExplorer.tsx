@@ -20,7 +20,7 @@ const layout: { span: string; size: "lg" | "md" | "sm" }[] = [
 export function CategoryExplorer({ limit }: { limit?: number }) {
   const list = limit ? categories.slice(0, limit) : categories;
   return (
-    <section aria-labelledby="explorer-title" className="bg-paper py-24 md:py-36">
+    <section aria-labelledby="explorer-title" className="bg-paper py-20 md:py-36">
       <div className="container-x">
         <SectionHead
           index="04"

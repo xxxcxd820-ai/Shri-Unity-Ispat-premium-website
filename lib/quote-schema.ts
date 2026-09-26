@@ -22,6 +22,8 @@ export const quoteSchema = z.object({
   category: z.string().trim().min(1, "Choose a product category"),
   product: optionalText(120),
   quantity: z.string().trim().min(1, "Tell us the approximate quantity").max(80),
+  unit: optionalText(20),
+  brand: optionalText(80),
   grade: optionalText(80),
   size: optionalText(160),
   location: z.string().trim().min(2, "Where should we deliver?").max(120),
@@ -41,6 +43,8 @@ export const quoteFieldLabels: Record<keyof Omit<QuoteInput, "website">, string>
   category: "Product category",
   product: "Product",
   quantity: "Required quantity",
+  unit: "Unit",
+  brand: "Brand preference",
   grade: "Required grade",
   size: "Size / dimensions",
   location: "Delivery location",
@@ -51,7 +55,14 @@ export const quoteFieldLabels: Record<keyof Omit<QuoteInput, "website">, string>
 /** Plain-text summary used in emails and the WhatsApp / email fallbacks. */
 export function quoteSummary(data: Partial<QuoteInput>) {
   return (Object.keys(quoteFieldLabels) as (keyof typeof quoteFieldLabels)[])
-    .filter((k) => data[k])
-    .map((k) => `${quoteFieldLabels[k]}: ${data[k]}`)
+    .filter((k) => data[k] && k !== "unit")
+    .map((k) => `${quoteFieldLabels[k]}: ${data[k]}${k === "quantity" && data.unit ? ` ${data.unit}` : ""}`)
     .join("\n");
 }
+
+/** Fields validated on each step of the enquiry builder. */
+export const quoteSteps: (keyof QuoteInput)[][] = [
+  ["category", "product"],
+  ["quantity", "unit", "grade", "size", "brand", "message"],
+  ["fullName", "company", "phone", "email", "location", "deliveryDate"],
+];

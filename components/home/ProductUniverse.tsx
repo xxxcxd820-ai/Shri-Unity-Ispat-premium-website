@@ -42,7 +42,7 @@ export function ProductUniverse() {
   );
 
   return (
-    <section ref={root} aria-labelledby="universe-title" className="bg-ivory py-24 md:py-36">
+    <section ref={root} aria-labelledby="universe-title" className="bg-ivory py-20 md:py-36">
       <div className="container-x">
         <SectionHead
           index="03"

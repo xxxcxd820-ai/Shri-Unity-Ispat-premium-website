@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { ChevronLeft, ChevronRight, Maximize2, X } from "lucide-react";
 import { images, stockyardGallery } from "@/lib/images";
 import { Img } from "@/components/ui/Img";
@@ -71,7 +71,7 @@ export function StockyardGallery({ limit }: { limit?: number }) {
 
       <AnimatePresence>
         {open !== null && (
-          <motion.div
+          <m.div
             role="dialog"
             aria-modal="true"
             aria-label={`${items[open].label} — photo ${open + 1} of ${items.length}`}
@@ -91,7 +91,7 @@ export function StockyardGallery({ limit }: { limit?: number }) {
             </div>
             <div className="relative flex-1" onClick={(e) => e.stopPropagation()}>
               <AnimatePresence mode="wait">
-                <motion.div
+                <m.div
                   key={open}
                   className="absolute inset-4 sm:inset-10"
                   initial={{ opacity: 0, scale: 0.98 }}
@@ -100,7 +100,7 @@ export function StockyardGallery({ limit }: { limit?: number }) {
                   transition={{ duration: 0.4 }}
                 >
                   <Img k={items[open].key} fill sizes="100vw" className="object-contain" />
-                </motion.div>
+                </m.div>
               </AnimatePresence>
               {[
                 { d: -1, label: "Previous photo", Icon: ChevronLeft, pos: "left-2 sm:left-6" },
@@ -120,7 +120,7 @@ export function StockyardGallery({ limit }: { limit?: number }) {
                 </button>
               ))}
             </div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </>

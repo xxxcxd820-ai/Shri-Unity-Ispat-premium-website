@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { FileText, Mail, Navigation, Phone } from "lucide-react";
 import { LocationSection } from "@/components/sections/LocationSection";
+import { QuoteSection } from "@/components/sections/QuoteSection";
 import { SplitHeading } from "@/components/ui/SplitHeading";
 import { Arrow } from "@/components/ui/Arrow";
 import { buildMetadata, JsonLd, breadcrumbJsonLd } from "@/lib/seo";
@@ -69,7 +70,8 @@ export default function ContactPage() {
           </ul>
         </div>
       </section>
-      <LocationSection index="—" />
+      <LocationSection index="01" />
+      <QuoteSection index="02" />
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Contact", path: "/contact" }])} />
     </>
   );

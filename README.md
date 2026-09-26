@@ -38,6 +38,15 @@ Each product has `availability`: `"in-stock"`, `"available"` or `"on-request"`. 
 
 Current photography comes from Unsplash and Wikimedia Commons — see `/credits`.
 
+## Motion & performance
+
+- **Preloader** (`components/layout/Preloader.tsx`) plays once per browser session; repeat visits and reduced-motion users skip it.
+- **Page transitions** (`components/layout/PageTransition.tsx`) — a navy curtain between routes. Add `data-no-transition` to any link that should navigate instantly.
+- **Scroll reveals** are CSS-driven: wrap content in `<Reveal>` / `<MaskReveal>`; one shared `IntersectionObserver` (`RevealObserver`) triggers them.
+- Heavy effects (line-split headings, parallax, pinned horizontal scroll, film grain) run on desktop only; phones get light fades.
+- Photos are WebP (`public/images/*.webp`) with blur-up placeholders; Next.js serves AVIF/WebP at the right size.
+- Framer Motion loads via `LazyMotion` (`domAnimation`); use `m.*` elements, not `motion.*`.
+
 ## Notes
 
 - No login, cart or checkout — conversion is Request a Quote, Call, WhatsApp, Email and Directions.

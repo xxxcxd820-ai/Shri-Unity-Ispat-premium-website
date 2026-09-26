@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { ChevronDown, Search, SlidersHorizontal, X } from "lucide-react";
 import { products } from "@/data/products";
 import { categories } from "@/data/categories";
@@ -173,6 +173,7 @@ export function Catalogue() {
         </aside>
 
         <div ref={resultsRef}>
+          <h2 className="sr-only">Matching products</h2>
           <div className="flex flex-wrap items-center justify-between gap-4 border-b border-line pb-4">
             <p className="text-sm text-graphite" aria-live="polite">
               <span className="font-display text-2xl text-navy">{results.length}</span>{" "}
@@ -207,22 +208,21 @@ export function Catalogue() {
           )}
 
           {results.length ? (
-            <motion.ul layout className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+            <m.ul className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
               <AnimatePresence mode="popLayout">
                 {results.map((p) => (
-                  <motion.li
+                  <m.li
                     key={`${p.category}/${p.slug}`}
-                    layout
                     initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.98 }}
                     transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                   >
                     <ProductCard product={p} />
-                  </motion.li>
+                  </m.li>
                 ))}
               </AnimatePresence>
-            </motion.ul>
+            </m.ul>
           ) : (
             <div className="mt-8 flex flex-col items-start gap-6 border border-dashed border-line-strong bg-ivory/60 p-8 sm:p-14">
               <p className="label text-gold">No match</p>
@@ -247,9 +247,9 @@ export function Catalogue() {
       {/* Mobile filter drawer */}
       <AnimatePresence>
         {drawer && (
-          <motion.div className="fixed inset-0 z-[60] lg:hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+          <m.div className="fixed inset-0 z-[60] lg:hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
             <button type="button" aria-label="Close filters" className="absolute inset-0 bg-navy/50" onClick={() => setDrawer(false)} />
-            <motion.div
+            <m.div
               role="dialog"
               aria-modal="true"
               aria-label="Filters"
@@ -274,8 +274,8 @@ export function Catalogue() {
                   Show {results.length}
                 </button>
               </div>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         )}
       </AnimatePresence>
     </div>

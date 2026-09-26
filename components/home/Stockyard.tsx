@@ -6,7 +6,7 @@ const held = ["Pipes", "Angles", "Channels", "Flats", "Structural sections", "Sh
 
 export function Stockyard() {
   return (
-    <section aria-labelledby="stockyard-title" className="bg-paper py-24 md:py-36">
+    <section aria-labelledby="stockyard-title" className="bg-paper py-20 md:py-36">
       <div className="container-x">
         <SectionHead
           index="07"

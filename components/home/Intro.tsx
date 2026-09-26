@@ -14,7 +14,7 @@ const pillars = [
 
 export function Intro({ index = "02" }: { index?: string }) {
   return (
-    <section aria-labelledby="intro-title" className="relative overflow-hidden bg-paper py-24 md:py-36">
+    <section aria-labelledby="intro-title" className="relative overflow-hidden bg-paper py-20 md:py-36">
       <div className="bg-blueprint pointer-events-none absolute inset-0 [mask-image:linear-gradient(to_bottom,black,transparent_70%)]" aria-hidden="true" />
       <div className="container-x relative">
         <div className="mb-14 flex items-center gap-4 text-steel-dark">

@@ -8,7 +8,7 @@ type Variant = "solid" | "gold" | "outline" | "light" | "outline-light";
 
 const styles: Record<Variant, string> = {
   solid: "bg-navy text-paper hover:bg-navy-2",
-  gold: "bg-gold text-white hover:bg-[#9a7733]",
+  gold: "bg-gold text-white hover:bg-[#735820]",
   outline: "border border-ink/25 text-ink hover:border-navy hover:bg-navy hover:text-paper",
   light: "bg-paper text-navy hover:bg-white",
   "outline-light": "border border-white/45 text-white hover:bg-white hover:text-navy",

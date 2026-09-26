@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { Img } from "@/components/ui/Img";
 import { SectionHead } from "@/components/ui/SectionHead";
 import type { ImageKey } from "@/lib/images";
@@ -61,7 +61,7 @@ export function WhyUs({ index = "06" }: { index?: string }) {
           <div className="relative hidden lg:col-span-5 lg:block">
             <div className="sticky top-[calc(var(--header-h)+2rem)] aspect-[4/5] overflow-hidden">
               <AnimatePresence mode="popLayout" initial={false}>
-                <motion.div
+                <m.div
                   key={active}
                   className="absolute inset-0"
                   initial={{ clipPath: "inset(0 0 0 100%)" }}
@@ -70,7 +70,7 @@ export function WhyUs({ index = "06" }: { index?: string }) {
                   transition={{ duration: 0.9, ease: [0.65, 0, 0.35, 1] }}
                 >
                   <Img k={points[active].image} fill sizes="40vw" className="object-cover" />
-                </motion.div>
+                </m.div>
               </AnimatePresence>
               <div className="absolute inset-x-0 bottom-0 flex items-end justify-between bg-gradient-to-t from-navy/80 to-transparent p-6">
                 <span className="label text-white/70">{String(active + 1).padStart(2, "0")} / {String(points.length).padStart(2, "0")}</span>

@@ -55,7 +55,7 @@ export function Philosophy({ index = "11" }: { index?: string }) {
   );
 
   return (
-    <section ref={root} id="quality" aria-labelledby="philosophy-title" className="relative bg-ivory py-24 md:py-36">
+    <section ref={root} id="quality" aria-labelledby="philosophy-title" className="relative bg-ivory py-20 md:py-36">
       <div className="container-x">
         <SectionHead
           index={index}

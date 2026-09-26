@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { useEffect } from "react";
 import { Mail, MessageCircle, Phone } from "lucide-react";
 import { nav, site, telHref, whatsappHref } from "@/lib/site";
@@ -18,7 +18,7 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
   return (
     <AnimatePresence>
       {open && (
-        <motion.div
+        <m.div
           id="mobile-menu"
           role="dialog"
           aria-modal="true"
@@ -33,7 +33,7 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
             <nav aria-label="Mobile" className="border-t border-line">
               <ul>
                 {[{ label: "Home", href: "/" }, ...nav, { label: "Request a Quote", href: "/quote" }].map((item, i) => (
-                  <motion.li
+                  <m.li
                     key={item.href}
                     initial={{ opacity: 0, y: 24 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -48,7 +48,7 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
                       {item.label}
                       <span className="label text-steel">{String(i + 1).padStart(2, "0")}</span>
                     </Link>
-                  </motion.li>
+                  </m.li>
                 ))}
               </ul>
             </nav>
@@ -85,7 +85,7 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
               </a>
             </div>
           </div>
-        </motion.div>
+        </m.div>
       )}
     </AnimatePresence>
   );

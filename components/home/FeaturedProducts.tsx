@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { featuredProducts } from "@/data/products";
+import type { Product } from "@/data/products";
 import { gsap, useGSAP, MQ } from "@/lib/gsap";
 import { ProductCard } from "@/components/catalogue/ProductCard";
 import { SectionHead } from "@/components/ui/SectionHead";
@@ -10,10 +10,9 @@ import { SectionHead } from "@/components/ui/SectionHead";
  * Featured products. Desktop: the track is pinned and scrolls horizontally with
  * the page. Mobile/tablet: a native swipeable scroll-snap rail.
  */
-export function FeaturedProducts() {
+export function FeaturedProducts({ items }: { items: Product[] }) {
   const root = useRef<HTMLElement>(null);
   const track = useRef<HTMLDivElement>(null);
-  const items = featuredProducts();
 
   useGSAP(
     () => {
@@ -50,7 +49,7 @@ export function FeaturedProducts() {
   );
 
   return (
-    <section ref={root} aria-labelledby="featured-title" className="overflow-hidden bg-ivory py-24 md:py-32 lg:py-24">
+    <section ref={root} aria-labelledby="featured-title" className="overflow-hidden bg-ivory py-20 md:py-32 lg:py-24">
       <div className="container-x">
         <SectionHead
           index="05"

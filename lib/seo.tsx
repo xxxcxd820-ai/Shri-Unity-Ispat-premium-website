@@ -72,7 +72,36 @@ export const organizationJsonLd = () => ({
   ],
 });
 
-export const breadcrumbJsonLd = (items: { name: string; path: string }[]) => ({
+export const websiteJsonLd = () => ({
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${site.url}/#website`,
+  name: site.name,
+  url: site.url,
+  inLanguage: "en-IN",
+  publisher: { "@id": `${site.url}/#organization` },
+  potentialAction: {
+    "@type": "SearchAction",
+    target: { "@type": "EntryPoint", urlTemplate: `${site.url}/products?q={search_term_string}` },
+    "query-input": "required name=search_term_string",
+  },
+});
+
+/** ItemList of product URLs for category landing pages. */
+export const itemListJsonLd = (name: string, items: { name: string; path: string }[]) => ({
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name,
+  numberOfItems: items.length,
+  itemListElement: items.map((item, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: item.name,
+    url: absoluteUrl(item.path),
+  })),
+});
+
+export const breadcrumbJsonLd =(items: { name: string; path: string }[]) => ({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: items.map((item, i) => ({
