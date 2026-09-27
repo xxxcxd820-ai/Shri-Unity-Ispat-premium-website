@@ -54,17 +54,20 @@ export function Intro({ index = "02" }: { index?: string }) {
             </Reveal>
           </div>
 
-          <div className="relative lg:col-span-5">
-            <MaskReveal className="relative aspect-[4/5] overflow-hidden bg-bone">
-              <Parallax amount={16}>
-                <Img k="structuralSectionsWarehouse" fill sizes="(min-width:1024px) 40vw, 100vw" className="object-cover" />
-              </Parallax>
-            </MaskReveal>
-            <div className="absolute -bottom-6 left-6 bg-navy px-5 py-4 text-white sm:-left-8">
-              <p className="label text-gold-soft">Base</p>
-              <p className="mt-1 font-display text-2xl">Varanasi, U.P.</p>
+          <div className="lg:col-span-5">
+            {/* Badge is anchored to the image frame, so it never overlaps the dimension line below */}
+            <div className="relative">
+              <MaskReveal className="relative aspect-[4/5] overflow-hidden bg-bone">
+                <Parallax amount={16}>
+                  <Img k="structuralSectionsWarehouse" fill sizes="(min-width:1024px) 40vw, 100vw" className="object-cover" />
+                </Parallax>
+              </MaskReveal>
+              <div className="absolute -bottom-6 left-6 bg-navy px-5 py-4 text-white sm:-left-8">
+                <p className="label text-gold-soft">Base</p>
+                <p className="mt-1 font-display text-2xl">Varanasi, U.P.</p>
+              </div>
             </div>
-            <DimensionLine label="Stockyard · Akhari Bypass" className="mt-14" />
+            <DimensionLine label="Stockyard · Akhari Bypass" className="mt-16" />
           </div>
         </div>
 
