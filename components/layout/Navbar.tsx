@@ -113,7 +113,7 @@ export function Navbar() {
               aria-expanded={open}
               aria-controls="mobile-menu"
               aria-label={open ? "Close menu" : "Open menu"}
-              className="relative z-10 flex size-11 items-center justify-center lg:hidden"
+              className="relative z-10 -mr-2 flex size-10 items-center justify-center lg:hidden"
             >
               <AnimatePresence initial={false} mode="wait">
                 {open ? (
@@ -122,8 +122,8 @@ export function Navbar() {
                   </m.span>
                 ) : (
                   <m.span key="m" className="flex flex-col gap-[7px]" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-                    <span className="block h-px w-7 bg-current" />
-                    <span className="block h-px w-5 self-end bg-current" />
+                    <span className="block h-px w-6 bg-current" />
+                    <span className="block h-px w-4 self-end bg-current" />
                   </m.span>
                 )}
               </AnimatePresence>

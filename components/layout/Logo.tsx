@@ -13,10 +13,17 @@ export function LogoMark({ className }: { className?: string }) {
 
 export function Logo({ className, compact = false }: { className?: string; compact?: boolean }) {
   return (
-    <span className={cn("flex items-center gap-3", className)}>
-      <LogoMark />
-      <span className="flex flex-col leading-none">
-        <span className="font-display text-[1.28rem] font-semibold tracking-[0.06em] uppercase">Shri Unity Ispat</span>
+    <span className={cn("flex items-center", compact ? "gap-2.5" : "gap-3", className)}>
+      <LogoMark className={compact ? "size-7" : undefined} />
+      <span className="flex flex-col leading-none whitespace-nowrap">
+        <span
+          className={cn(
+            "font-display font-semibold uppercase",
+            compact ? "text-[1.02rem] tracking-[0.05em]" : "text-[1.28rem] tracking-[0.06em]",
+          )}
+        >
+          Shri Unity Ispat
+        </span>
         {!compact && (
           <span className="mt-1 text-[0.56rem] font-semibold tracking-[0.3em] uppercase opacity-70">
             Iron &amp; Steel — The Complete Solution

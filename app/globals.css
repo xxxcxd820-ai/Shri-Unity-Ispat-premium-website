@@ -66,7 +66,8 @@
 @layer base {
   :root {
     color-scheme: light;
-    --header-h: 76px;
+    --header-h: 60px;
+    @media (width >= 64rem) { --header-h: 76px; }
   }
 
   html {

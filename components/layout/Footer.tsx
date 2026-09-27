@@ -21,19 +21,19 @@ export function Footer() {
 
       <div className="container-x relative">
         {/* CTA band */}
-        <div className="grid gap-10 border-b border-white/10 py-16 md:py-24 lg:grid-cols-12 lg:items-end">
+        <div className="grid gap-7 border-b border-white/10 py-12 md:gap-10 md:py-24 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-8">
-            <p className="label mb-6 text-gold-soft">Start a requirement</p>
-            <p className="font-display text-[clamp(2.4rem,6vw,5.5rem)] leading-[0.95] text-white uppercase">
+            <p className="label mb-4 text-gold-soft md:mb-6">Start a requirement</p>
+            <p className="font-display text-[clamp(1.9rem,6vw,5.5rem)] leading-[0.95] text-white uppercase">
               Tell us what
               <br />
               you are building.
             </p>
           </div>
-          <div className="flex flex-wrap gap-3 lg:col-span-4 lg:justify-end">
+          <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:gap-3 lg:col-span-4 lg:justify-end">
             <Link
               href="/quote"
-              className="group inline-flex h-13 items-center gap-3 bg-gold px-7 text-[0.7rem] font-semibold tracking-[0.2em] text-white uppercase transition-colors hover:bg-[#735820]"
+              className="group inline-flex h-11 items-center justify-center gap-2 px-4 sm:h-13 sm:gap-3 bg-gold text-[0.64rem] font-semibold tracking-[0.16em] sm:px-7 sm:text-[0.7rem] sm:tracking-[0.2em] text-white uppercase transition-colors hover:bg-[#735820]"
             >
               Request a Quote <Arrow />
             </Link>
@@ -41,7 +41,7 @@ export function Footer() {
               href={whatsappHref()}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex h-13 items-center gap-3 border border-white/30 px-7 text-[0.7rem] font-semibold tracking-[0.2em] text-white uppercase transition-colors hover:bg-white hover:text-navy"
+              className="group inline-flex h-11 items-center justify-center gap-2 px-4 sm:h-13 sm:gap-3 border border-white/30 text-[0.64rem] font-semibold tracking-[0.16em] sm:px-7 sm:text-[0.7rem] sm:tracking-[0.2em] text-white uppercase transition-colors hover:bg-white hover:text-navy"
             >
               WhatsApp <Arrow direction="up-right" />
             </a>
@@ -49,18 +49,18 @@ export function Footer() {
         </div>
 
         {/* Columns */}
-        <div className="grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-12">
-          <div className="lg:col-span-3">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-10 py-12 md:py-16 lg:grid-cols-12 lg:gap-12">
+          <div className="col-span-2 lg:col-span-3">
             <Logo className="text-white" />
-            <p className="mt-6 max-w-sm text-sm leading-relaxed text-white/60">
+            <p className="mt-4 max-w-sm text-[0.8rem] leading-relaxed text-white/60 md:mt-6 md:text-sm">
               Iron and steel supplier, distributor and stockist in Varanasi — supplying construction, fabrication,
               infrastructure and industrial requirements.
             </p>
           </div>
 
-          <div className="lg:col-span-4">
-            <h2 className="label mb-6 text-white/50">Products</h2>
-            <ul className="grid grid-cols-1 gap-x-6 gap-y-2.5 text-sm min-[420px]:grid-cols-2">
+          <div className="col-span-2 lg:col-span-4">
+            <h2 className="label mb-4 text-white/50 md:mb-6">Products</h2>
+            <ul className="grid grid-cols-2 gap-x-6 gap-y-2 text-[0.8rem] md:gap-y-2.5 md:text-sm">
               {categories.map((c) => (
                 <li key={c.slug}>
                   <Link href={`/products/${c.slug}`} className="link-underline text-white/75 hover:text-white">
@@ -72,8 +72,8 @@ export function Footer() {
           </div>
 
           <div className="lg:col-span-2">
-            <h2 className="label mb-6 text-white/50">Company</h2>
-            <ul className="space-y-2.5 text-sm">
+            <h2 className="label mb-4 text-white/50 md:mb-6">Company</h2>
+            <ul className="space-y-2 text-[0.8rem] md:space-y-2.5 md:text-sm">
               {company.map((l) => (
                 <li key={l.href}>
                   <Link href={l.href} className="link-underline text-white/75 hover:text-white">
@@ -85,8 +85,8 @@ export function Footer() {
           </div>
 
           <div className="lg:col-span-3">
-            <h2 className="label mb-6 text-white/50">Contact</h2>
-            <address className="space-y-4 text-sm not-italic">
+            <h2 className="label mb-4 text-white/50 md:mb-6">Contact</h2>
+            <address className="space-y-3 text-[0.8rem] not-italic md:space-y-4 md:text-sm">
               <a href={directionsHref} target="_blank" rel="noopener noreferrer" className="block text-white/75 hover:text-white">
                 {site.address.line1}
                 <br />
@@ -100,20 +100,21 @@ export function Footer() {
                 ))}
               </span>
               <a href={`mailto:${site.email}`} className="block break-words text-white/75 hover:text-white">
-                {site.email}
+                {site.email.split("@")[0]}
+                <wbr />@{site.email.split("@")[1]}
               </a>
             </address>
           </div>
         </div>
 
         {/* Oversized wordmark */}
-        <div aria-hidden="true" className="pointer-events-none select-none overflow-hidden">
+        <div aria-hidden="true" className="pointer-events-none hidden select-none overflow-hidden sm:block">
           <p className="font-display text-[15.5vw] leading-[0.8] font-semibold tracking-[-0.02em] whitespace-nowrap text-white/[0.04] uppercase">
             Unity Ispat
           </p>
         </div>
 
-        <div className="flex flex-col gap-4 border-t border-white/10 pt-8 pb-24 text-xs lg:pb-8 text-white/50 md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-col gap-2 border-t border-white/10 pt-6 pb-24 text-[0.7rem] text-white/50 md:flex-row md:items-center md:justify-between md:gap-4 md:pt-8 md:text-xs lg:pb-8">
           <p>© {new Date().getFullYear()} Shri Unity Ispat. All Rights Reserved.</p>
           <p className="label text-white/40">Iron &amp; Steel — The Complete Solution</p>
           <Link href="/credits" className="hover:text-white">

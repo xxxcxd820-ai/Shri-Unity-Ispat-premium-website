@@ -6,10 +6,11 @@ import { useEffect, useState } from "react";
 import { MessageCircle, Phone } from "lucide-react";
 import { site, telHref, whatsappHref } from "@/lib/site";
 import { cn } from "@/lib/utils";
+import { Arrow } from "@/components/ui/Arrow";
 
 /**
  * Desktop: vertical "Request Quote" tab on the right edge.
- * Mobile: sticky bottom bar with Call / WhatsApp / Quote.
+ * Mobile: compact floating dock with Call / WhatsApp / Quote.
  */
 export function FloatingCta() {
   const pathname = usePathname();
@@ -42,30 +43,40 @@ export function FloatingCta() {
         <span className="block h-6 w-px bg-gold-soft" aria-hidden="true" />
       </Link>
 
-      <div
+      {/* Mobile: compact floating dock */}
+      <nav
+        aria-label="Quick contact"
         className={cn(
-          "fixed inset-x-0 bottom-0 z-40 grid grid-cols-[auto_auto_1fr] border-t border-line bg-paper/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-lg transition-transform duration-500 lg:hidden",
-          visible ? "translate-y-0" : "translate-y-full",
+          "fixed inset-x-3 bottom-[max(0.75rem,env(safe-area-inset-bottom))] z-40 flex h-12 items-stretch overflow-hidden bg-navy/95 text-white shadow-[0_18px_40px_-12px_rgb(15_29_49/0.55)] ring-1 ring-white/10 backdrop-blur transition-all duration-500 lg:hidden",
+          visible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-[calc(100%+1rem)] opacity-0",
         )}
       >
-        <a href={telHref(site.phones[0].e164)} className="flex items-center gap-2 border-r border-line px-5 text-navy" aria-label="Call Shri Unity Ispat">
-          <Phone className="size-4" aria-hidden="true" />
-          <span className="label">Call</span>
+        <a
+          href={telHref(site.phones[0].e164)}
+          className="flex w-12 items-center justify-center border-r border-white/10 transition-colors active:bg-white/10"
+          aria-label="Call Shri Unity Ispat"
+        >
+          <Phone className="size-[1.05rem]" aria-hidden="true" />
         </a>
         <a
           href={whatsappHref()}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 border-r border-line px-5 text-navy"
+          className="flex w-12 items-center justify-center border-r border-white/10 transition-colors active:bg-white/10"
           aria-label="Chat on WhatsApp"
         >
-          <MessageCircle className="size-4" aria-hidden="true" />
-          <span className="label">WhatsApp</span>
+          <MessageCircle className="size-[1.05rem]" aria-hidden="true" />
         </a>
-        <Link href="/quote" className="flex h-14 items-center justify-center bg-navy text-[0.68rem] font-semibold tracking-[0.2em] text-paper uppercase">
-          Request Quote
+        <Link
+          href="/quote"
+          className="flex flex-1 items-center justify-between gap-3 px-4 text-[0.66rem] font-semibold tracking-[0.18em] whitespace-nowrap uppercase transition-colors active:bg-white/10"
+        >
+          Request a quote
+          <span className="flex size-7 items-center justify-center bg-gold-soft text-navy" aria-hidden="true">
+            <Arrow className="size-3.5" />
+          </span>
         </Link>
-      </div>
+      </nav>
     </>
   );
 }
