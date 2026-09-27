@@ -22,7 +22,7 @@ export default function CreditsPage() {
           Photography on this site is sourced from Unsplash (Unsplash License) and Wikimedia Commons (licences as
           listed). Images are used to illustrate product families and applications.
         </p>
-        <div className="mt-12 overflow-x-auto border border-line">
+        <div className="mt-10 overflow-x-auto border border-line">
           <table className="w-full min-w-[40rem] text-left text-sm">
             <thead className="bg-ivory">
               <tr>

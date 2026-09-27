@@ -34,8 +34,8 @@ export default function IndustriesPage() {
         crumbs={[{ name: "Industries", path: "/industries" }]}
       />
 
-      <section className="bg-paper py-20 md:py-28">
-        <div className="container-x space-y-20 md:space-y-32">
+      <section className="bg-paper py-14 md:py-20">
+        <div className="container-x space-y-14 md:space-y-20">
           {industries.map((ind, i) => (
             <article key={ind.slug} id={ind.slug} className="grid scroll-mt-28 items-center gap-10 lg:grid-cols-12">
               <div className={cn("relative aspect-[4/3] overflow-hidden bg-bone lg:col-span-7", i % 2 === 1 && "lg:order-2 lg:col-start-6")}>

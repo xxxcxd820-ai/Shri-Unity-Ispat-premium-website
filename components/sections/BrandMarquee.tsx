@@ -1,28 +1,40 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useRef } from "react";
 import { brands } from "@/data/brands";
 import { gsap, useGSAP } from "@/lib/gsap";
+import { cn } from "@/lib/utils";
+
+/** Small I-beam glyph used as the separator between brands. */
+function Beam({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 20 20" className={cn("size-3.5 shrink-0 md:size-4", className)} aria-hidden="true">
+      <path d="M3 3h14v3H11.5v8H17v3H3v-3h5.5V6H3z" fill="currentColor" />
+    </svg>
+  );
+}
 
 /**
- * Slow, continuous brand marquee that eases to a stop on hover/focus.
- * Brands render as typographic wordmarks unless an approved logo file is set.
+ * Single-row brand marquee: large serif wordmarks with a short product line,
+ * separated by gold I-beam marks. Glides continuously, eases to a stop on hover
+ * or keyboard focus, and becomes a static scrollable strip for reduced motion.
  */
 export function BrandMarquee({ tone = "light" }: { tone?: "light" | "dark" }) {
   const root = useRef<HTMLDivElement>(null);
-  const track = useRef<HTMLUListElement>(null);
+  const dark = tone === "dark";
 
   useGSAP(
     () => {
-      const el = track.current;
-      if (!el) return;
+      const track = root.current?.querySelector<HTMLElement>("[data-marquee-track]");
+      if (!track) return;
       const mm = gsap.matchMedia();
       mm.add("(prefers-reduced-motion: no-preference)", () => {
-        const tween = gsap.to(el, { xPercent: -50, duration: 55, ease: "none", repeat: -1 });
-        const slow = () => gsap.to(tween, { timeScale: 0, duration: 0.8, ease: "power2.out" });
-        const resume = () => gsap.to(tween, { timeScale: 1, duration: 0.8, ease: "power2.in" });
+        const tween = gsap.to(track, { xPercent: -50, duration: 50, ease: "none", repeat: -1 });
         const wrap = root.current!;
+        const slow = () => gsap.to(tween, { timeScale: 0, duration: 0.7, ease: "power2.out" });
+        const resume = () => gsap.to(tween, { timeScale: 1, duration: 0.9, ease: "power2.in" });
         wrap.addEventListener("pointerenter", slow);
         wrap.addEventListener("pointerleave", resume);
         wrap.addEventListener("focusin", slow);
@@ -39,35 +51,48 @@ export function BrandMarquee({ tone = "light" }: { tone?: "light" | "dark" }) {
     { scope: root },
   );
 
-  const dark = tone === "dark";
   const row = [...brands, ...brands];
 
   return (
     <div
       ref={root}
-      className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]"
+      className="no-scrollbar overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_7%,black_93%,transparent)] motion-reduce:overflow-x-auto"
     >
-      <ul ref={track} className="flex w-max items-center" aria-label="Brands we deal in">
-        {row.map((b, i) => (
-          <li
-            key={`${b.slug}-${i}`}
-            aria-hidden={i >= brands.length ? true : undefined}
-            className={`group flex h-28 shrink-0 items-center gap-6 border-r px-10 md:h-36 md:px-16 ${dark ? "border-white/10" : "border-line"}`}
-          >
-            {b.logo ? (
-              <Image src={b.logo} alt={b.name} width={160} height={60} className="h-10 w-auto object-contain grayscale transition group-hover:grayscale-0" />
-            ) : (
-              <span
-                className={`font-display text-[clamp(1.6rem,2.6vw,2.4rem)] font-semibold tracking-[0.04em] whitespace-nowrap uppercase transition-colors duration-500 ${
-                  dark ? "text-white/45 group-hover:text-white" : "text-steel group-hover:text-navy"
-                }`}
+      <ul data-marquee-track className="flex w-max items-center py-7 md:py-9" aria-label="Brands we deal in">
+        {row.map((b, i) => {
+          const hidden = i >= brands.length;
+          return (
+            <li key={`${b.slug}-${i}`} className="flex shrink-0 items-center" aria-hidden={hidden || undefined}>
+              <Link
+                href={`/brands#brand-${b.slug}`}
+                tabIndex={hidden ? -1 : undefined}
+                className="group flex items-center gap-4 px-7 md:gap-5 md:px-10"
               >
-                {b.name}
-              </span>
-            )}
-            <span className={`label hidden max-w-[9rem] leading-snug xl:block ${dark ? "text-white/35" : "text-steel/80"}`}>{b.lines}</span>
-          </li>
-        ))}
+                {b.logo ? (
+                  <Image src={b.logo} alt={b.name} width={160} height={60} className="h-10 w-auto object-contain" />
+                ) : (
+                  <span
+                    className={cn(
+                      "font-display text-[1.9rem] leading-none font-semibold tracking-[0.02em] whitespace-nowrap uppercase transition-colors duration-300 md:text-[2.6rem]",
+                      dark ? "text-white group-hover:text-gold-soft" : "text-navy group-hover:text-gold",
+                    )}
+                  >
+                    {b.name}
+                  </span>
+                )}
+                <span
+                  className={cn(
+                    "hidden max-w-[9.5rem] text-[0.75rem] leading-snug md:block",
+                    dark ? "text-white/60" : "text-steel-dark",
+                  )}
+                >
+                  {b.lines}
+                </span>
+              </Link>
+              <Beam className={dark ? "text-gold-soft/80" : "text-gold/80"} />
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

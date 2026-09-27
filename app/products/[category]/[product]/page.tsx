@@ -105,7 +105,7 @@ export default async function ProductPage(props: PageProps<"/products/[category]
       </PageHero>
 
       {/* Presentation */}
-      <section className="bg-paper py-20 md:py-28">
+      <section className="bg-paper py-14 md:py-20">
         <div className="container-x grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-7">
             <MaskReveal className="relative aspect-[4/3] overflow-hidden bg-bone">
@@ -146,7 +146,7 @@ export default async function ProductPage(props: PageProps<"/products/[category]
       </section>
 
       {/* Specifications */}
-      <section id="specifications" aria-labelledby="spec-title" className="bg-ivory py-20 md:py-28">
+      <section id="specifications" aria-labelledby="spec-title" className="bg-ivory py-14 md:py-20">
         <div className="container-x grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <div className="lg:sticky lg:top-[calc(var(--header-h)+2rem)]">
@@ -176,10 +176,10 @@ export default async function ProductPage(props: PageProps<"/products/[category]
       </section>
 
       {/* Applications */}
-      <section aria-labelledby="papps-title" className="bg-paper py-20 md:py-28">
+      <section aria-labelledby="papps-title" className="bg-paper py-14 md:py-20">
         <div className="container-x">
           <SectionHead label="Applications" title={<span id="papps-title">Put to work in.</span>} />
-          <div className="mt-12">
+          <div className="mt-10">
             <ApplicationCards applications={p.applications} fallback={p.image} />
           </div>
         </div>
@@ -187,14 +187,14 @@ export default async function ProductPage(props: PageProps<"/products/[category]
 
       {/* Brands */}
       {brandSlugs.length > 0 && (
-        <section aria-labelledby="pbrands-title" className="bg-paper pb-20 md:pb-28">
+        <section aria-labelledby="pbrands-title" className="bg-paper pb-14 md:pb-20">
           <div className="container-x">
             <SectionHead
               label="Available brands"
               title={<span id="pbrands-title">Brands we deal in.</span>}
               intro="Brand availability varies by size and time of order."
             />
-            <div className="mt-12">
+            <div className="mt-10">
               <BrandList slugs={brandSlugs} />
             </div>
           </div>
@@ -202,7 +202,7 @@ export default async function ProductPage(props: PageProps<"/products/[category]
       )}
 
       {/* CTA band */}
-      <section aria-labelledby="need-title" className="relative overflow-hidden bg-navy py-20 text-white md:py-28">
+      <section aria-labelledby="need-title" className="relative overflow-hidden bg-navy py-14 text-white md:py-20">
         <div className="bg-blueprint-dark pointer-events-none absolute inset-0" aria-hidden="true" />
         <div className="container-x relative grid gap-10 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
@@ -227,7 +227,7 @@ export default async function ProductPage(props: PageProps<"/products/[category]
 
       {/* Related */}
       {related.length > 0 && (
-        <section aria-labelledby="related-title" className="bg-ivory py-20 md:py-28">
+        <section aria-labelledby="related-title" className="bg-ivory py-14 md:py-20">
           <div className="container-x">
             <SectionHead label={`More in ${c.name}`} title={<span id="related-title">Related products.</span>} />
             <ul className="no-scrollbar -mx-4 mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 lg:grid-cols-4">

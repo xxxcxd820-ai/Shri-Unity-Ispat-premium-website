@@ -22,7 +22,7 @@ export default function NotFound() {
             Home
           </LinkButton>
         </div>
-        <ul className="mt-14 flex flex-wrap gap-2">
+        <ul className="mt-10 flex flex-wrap gap-2">
           {categories.map((c) => (
             <li key={c.slug}>
               <Link href={`/products/${c.slug}`} className="inline-block border border-line px-3 py-2 text-xs text-navy hover:border-navy">

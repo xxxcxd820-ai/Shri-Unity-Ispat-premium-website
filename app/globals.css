@@ -47,14 +47,6 @@
     51% { transform: scaleX(1); transform-origin: right; }
     100% { transform: scaleX(0); transform-origin: right; }
   }
-  @keyframes heroBar {
-    from { transform: scaleX(0); }
-    to { transform: scaleX(1); }
-  }
-  @keyframes kenburns {
-    from { transform: scale(1.12); }
-    to { transform: scale(1); }
-  }
   @keyframes scrollcue {
     0% { transform: translateY(-100%); }
     60%, 100% { transform: translateY(300%); }
@@ -239,11 +231,6 @@
   }
 }
 
-/* First-visit preloader: hidden on repeat visits and for reduced motion */
-.intro-skip #preloader { display: none !important; }
-@media (prefers-reduced-motion: reduce) {
-  #preloader { display: none !important; }
-}
 
 /* Never allow sideways scrolling on small screens */
 html, body { overflow-x: clip; }

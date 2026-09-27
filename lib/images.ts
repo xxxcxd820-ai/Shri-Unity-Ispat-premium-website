@@ -28,6 +28,14 @@ const unsplash = (id: string) => ({
 });
 
 export const images = {
+  warehouseCraneHook: {
+    src: "/images/warehouse-crane-hook.webp",
+    width: 1600,
+    height: 2400,
+    blur: "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADQAwCdASoMABIAPu1iqU2ppaOiMAgBMB2JYwC7ABuGVc/D3gHQ/QAA/kx0V+MY1MZ+sQ78PoR8dfLwQNS4xKLe1wdFOjxC78T9M6FKuxK4xCDyW+qLqKhB3GQSzHAcf1e4AA==",
+    alt: "Yellow overhead crane hook in a bright steel warehouse",
+    source: unsplash("1730584475783-b4b44593ef00"),
+  },
   heroSteelPlantSunrise: {
     src: "/images/hero-steel-plant-sunrise.webp",
     width: 1920,

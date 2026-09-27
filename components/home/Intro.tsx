@@ -14,10 +14,10 @@ const pillars = [
 
 export function Intro({ index = "02" }: { index?: string }) {
   return (
-    <section aria-labelledby="intro-title" className="relative overflow-hidden bg-paper py-20 md:py-36">
+    <section aria-labelledby="intro-title" className="relative overflow-hidden bg-paper py-14 md:py-20">
       <div className="bg-blueprint pointer-events-none absolute inset-0 [mask-image:linear-gradient(to_bottom,black,transparent_70%)]" aria-hidden="true" />
       <div className="container-x relative">
-        <div className="mb-14 flex items-center gap-4 text-steel-dark">
+        <div className="mb-8 flex items-center gap-4 text-steel-dark">
           <span className="label text-gold">{index}</span>
           <span className="h-px w-10 bg-ink/20" aria-hidden="true" />
           <span className="label">The company</span>
@@ -59,7 +59,7 @@ export function Intro({ index = "02" }: { index?: string }) {
             <div className="relative">
               <MaskReveal className="relative aspect-[4/5] overflow-hidden bg-bone">
                 <Parallax amount={16}>
-                  <Img k="structuralSectionsWarehouse" fill sizes="(min-width:1024px) 40vw, 100vw" className="object-cover" />
+                  <Img k="warehouseCraneHook" fill sizes="(min-width:1024px) 40vw, 100vw" className="object-cover object-[50%_40%]" />
                 </Parallax>
               </MaskReveal>
               <div className="absolute -bottom-6 left-6 bg-navy px-5 py-4 text-white sm:-left-8">
@@ -67,11 +67,11 @@ export function Intro({ index = "02" }: { index?: string }) {
                 <p className="mt-1 font-display text-2xl">Varanasi, U.P.</p>
               </div>
             </div>
-            <DimensionLine label="Stockyard · Akhari Bypass" className="mt-16" />
+            <DimensionLine label="Stockyard · Akhari Bypass" className="mt-12" />
           </div>
         </div>
 
-        <ol className="mt-24 grid border-t border-line sm:grid-cols-2 lg:grid-cols-4">
+        <ol className="mt-10 grid border-t border-line sm:grid-cols-2 lg:grid-cols-4">
           {pillars.map((p, i) => (
             <li key={p.n} className="group border-b border-line py-8 sm:odd:pr-8 lg:border-r lg:border-b-0 lg:px-8 lg:first:pl-0 lg:last:border-r-0">
               <Reveal delay={i * 0.08}>

@@ -96,7 +96,7 @@ export default async function CategoryPage(props: PageProps<"/products/[category
       </PageHero>
 
       {/* Overview */}
-      <section className="bg-paper py-20 md:py-28">
+      <section className="bg-paper py-14 md:py-20">
         <div className="container-x grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <p className="label text-gold">Overview</p>
@@ -120,7 +120,7 @@ export default async function CategoryPage(props: PageProps<"/products/[category
       </section>
 
       {/* Products grid */}
-      <section aria-labelledby="range-title" className="bg-ivory py-20 md:py-28">
+      <section aria-labelledby="range-title" className="bg-ivory py-14 md:py-20">
         <div className="container-x">
           <SectionHead
             index={c.index}
@@ -128,11 +128,11 @@ export default async function CategoryPage(props: PageProps<"/products/[category
             title={<span id="range-title">Specifications by product.</span>}
             intro={`Every item below opens into a detailed specification page. Items marked “${availabilityLabel["on-request"]}” are procured against enquiry.`}
           />
-          <ul className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {list.map((p, i) => (
               <li key={p.slug}>
                 <Reveal delay={(i % 4) * 0.05} className="h-full">
-                  <ProductCard product={p} index={i} />
+                  <ProductCard product={p} />
                 </Reveal>
               </li>
             ))}
@@ -141,10 +141,10 @@ export default async function CategoryPage(props: PageProps<"/products/[category
       </section>
 
       {/* Standards table */}
-      <section aria-labelledby="standards-title" className="bg-paper py-20 md:py-28">
+      <section aria-labelledby="standards-title" className="bg-paper py-14 md:py-20">
         <div className="container-x">
           <SectionHead label="At a glance" title={<span id="standards-title">Grades &amp; standards.</span>} />
-          <div className="mt-12 overflow-x-auto border border-line">
+          <div className="mt-10 overflow-x-auto border border-line">
             <table className="w-full min-w-[40rem] text-left text-sm">
               <thead className="bg-ivory">
                 <tr>
@@ -190,10 +190,10 @@ export default async function CategoryPage(props: PageProps<"/products/[category
       )}
 
       {/* Applications */}
-      <section aria-labelledby="apps-title" className="bg-paper py-20 md:py-28">
+      <section aria-labelledby="apps-title" className="bg-paper py-14 md:py-20">
         <div className="container-x">
           <SectionHead label="Applications" title={<span id="apps-title">Where it goes to work.</span>} />
-          <div className="mt-12">
+          <div className="mt-10">
             <ApplicationCards applications={c.applications} fallback={c.image} />
           </div>
         </div>
@@ -201,14 +201,14 @@ export default async function CategoryPage(props: PageProps<"/products/[category
 
       {/* Brands */}
       {categoryBrands.length > 0 && (
-        <section aria-labelledby="cat-brands-title" className="bg-paper pb-20 md:pb-28">
+        <section aria-labelledby="cat-brands-title" className="bg-paper pb-14 md:pb-20">
           <div className="container-x">
             <SectionHead
               label="Brands we deal in"
               title={<span id="cat-brands-title">Available brands.</span>}
               intro="Subject to availability at the time of order. Tell us your preferred brand when requesting a quote."
             />
-            <div className="mt-12">
+            <div className="mt-10">
               <BrandList slugs={categoryBrands} />
             </div>
           </div>
@@ -216,10 +216,10 @@ export default async function CategoryPage(props: PageProps<"/products/[category
       )}
 
       {/* Related categories */}
-      <section aria-labelledby="related-cat-title" className="bg-ivory py-20 md:py-28">
+      <section aria-labelledby="related-cat-title" className="bg-ivory py-14 md:py-20">
         <div className="container-x">
           <SectionHead label="Continue exploring" title={<span id="related-cat-title">Related families.</span>} />
-          <div className="mt-12 grid gap-4 md:grid-cols-2">
+          <div className="mt-10 grid gap-4 md:grid-cols-2">
             {related.map((r) => (
               <CategoryCard key={r.slug} category={r} size="md" count={productsByCategory(r.slug).length} className="md:aspect-[16/11]" />
             ))}

@@ -142,7 +142,7 @@ const tmt: Product[] = [
     "fe-500d-tmt-bars",
     "Enhanced ductility for seismic-sensitive structures.",
     "The 'D' grades in IS 1786 carry tighter limits on carbon, sulphur and phosphorus and higher elongation requirements — preferred where ductility matters, such as in seismic zones.",
-    { featured: true, image: "tmtBarsStack" },
+    { featured: true },
   ),
   tmtGrade(
     "Fe 550",

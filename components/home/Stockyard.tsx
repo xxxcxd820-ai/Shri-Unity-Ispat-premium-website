@@ -4,18 +4,18 @@ import { LinkButton } from "@/components/ui/Button";
 
 const held = ["Pipes", "Angles", "Channels", "Flats", "Structural sections", "Sheets", "Bars"];
 
-export function Stockyard() {
+export function Stockyard({ index = "05" }: { index?: string }) {
   return (
-    <section aria-labelledby="stockyard-title" className="bg-paper py-20 md:py-36">
+    <section aria-labelledby="stockyard-title" className="bg-paper py-14 md:py-20">
       <div className="container-x">
         <SectionHead
-          index="07"
+          index={index}
           label="Stockyard"
           title={<span id="stockyard-title">The material behind the promise.</span>}
           intro="Our Varanasi stockyard carries the everyday sections, tubulars and flat steel that keep fabrication shops and sites moving."
         />
 
-        <ul className="mt-12 flex flex-wrap gap-2 md:mt-16">
+        <ul className="mt-8 flex flex-wrap gap-2">
           {held.map((h) => (
             <li key={h} className="border border-line px-4 py-2 text-xs font-semibold tracking-[0.14em] text-graphite uppercase">
               {h}

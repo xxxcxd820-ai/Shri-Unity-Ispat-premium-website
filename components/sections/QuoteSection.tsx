@@ -12,7 +12,7 @@ export function QuoteSection({
   defaultProduct?: string;
 }) {
   return (
-    <section id="quote" aria-labelledby="quote-title" className="relative bg-ivory py-20 md:py-32">
+    <section id="quote" aria-labelledby="quote-title" className="relative bg-ivory py-14 md:py-20">
       <div className="bg-blueprint pointer-events-none absolute inset-0 [mask-image:linear-gradient(to_bottom,black,transparent_55%)]" aria-hidden="true" />
       <div className="container-x relative">
         <SectionHead
@@ -21,7 +21,7 @@ export function QuoteSection({
           title={<span id="quote-title">Share the requirement. We&rsquo;ll do the rest.</span>}
           intro="Three quick steps — product, specification, delivery. Our team responds with pricing and availability."
         />
-        <div className="mt-12 md:mt-16">
+        <div className="mt-8 md:mt-10">
           <QuoteForm options={getQuoteOptions()} defaultCategory={defaultCategory} defaultProduct={defaultProduct} />
         </div>
       </div>

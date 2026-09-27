@@ -40,10 +40,9 @@ Current photography comes from Unsplash and Wikimedia Commons — see `/credits`
 
 ## Motion & performance
 
-- **Preloader** (`components/layout/Preloader.tsx`) plays once per browser session; repeat visits and reduced-motion users skip it.
 - **Page transitions** (`components/layout/PageTransition.tsx`) — a navy curtain between routes. Add `data-no-transition` to any link that should navigate instantly.
 - **Scroll reveals** are CSS-driven: wrap content in `<Reveal>` / `<MaskReveal>`; one shared `IntersectionObserver` (`RevealObserver`) triggers them.
-- Heavy effects (line-split headings, parallax, pinned horizontal scroll, film grain) run on desktop only; phones get light fades.
+- Motion is deliberately restrained: soft entrances, image parallax and line-split headings on desktop only; phones get light fades. Horizontal lists use `ScrollRail` (native swipe + arrow buttons) rather than scroll-pinning.
 - Photos are WebP (`public/images/*.webp`) with blur-up placeholders; Next.js serves AVIF/WebP at the right size.
 - Framer Motion loads via `LazyMotion` (`domAnimation`); use `m.*` elements, not `motion.*`.
 
@@ -51,4 +50,4 @@ Current photography comes from Unsplash and Wikimedia Commons — see `/credits`
 
 - No login, cart or checkout — conversion is Request a Quote, Call, WhatsApp, Email and Directions.
 - Brand names are shown as "Brands we deal in"; no authorised-dealer claims.
-- Motion respects `prefers-reduced-motion`; heavy scroll effects (pinning, horizontal travel) run on desktop only.
+- Motion respects `prefers-reduced-motion`.

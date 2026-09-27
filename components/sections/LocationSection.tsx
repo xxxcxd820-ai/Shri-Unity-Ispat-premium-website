@@ -8,7 +8,7 @@ export function LocationSection({ index = "13", headingLevel = "h2" }: { index?:
   return (
     <section aria-labelledby="location-title" className="bg-navy text-white">
       <div className="grid lg:grid-cols-12">
-        <div className="relative px-4 py-20 sm:px-7 md:py-28 lg:col-span-5 lg:px-[clamp(2.5rem,5vw,5rem)]">
+        <div className="relative px-4 py-14 sm:px-7 md:py-20 lg:col-span-5 lg:px-[clamp(2.5rem,5vw,5rem)]">
           <div className="bg-blueprint-dark pointer-events-none absolute inset-0" aria-hidden="true" />
           <div className="relative">
             <div className="mb-6 flex items-center gap-4 text-white/60">

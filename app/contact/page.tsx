@@ -25,7 +25,7 @@ export default function ContactPage() {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-paper pt-[calc(var(--header-h)+4rem)] pb-16 md:pb-24">
+      <section className="relative overflow-hidden bg-paper pt-[calc(var(--header-h)+4rem)] pb-12 md:pb-14">
         <div className="bg-blueprint pointer-events-none absolute inset-0 [mask-image:linear-gradient(to_bottom,black,transparent_85%)]" aria-hidden="true" />
         <div className="container-x relative">
           <p className="eyebrow flex items-center gap-3 text-gold">
@@ -39,7 +39,7 @@ export default function ContactPage() {
             Iron and steel — <span className="text-gold">the complete solution</span>
           </p>
 
-          <ul className="mt-16 grid border-t border-l border-line sm:grid-cols-2 lg:grid-cols-4">
+          <ul className="mt-10 grid border-t border-l border-line sm:grid-cols-2 lg:grid-cols-4">
             {actions.map(({ Icon, title, detail, href, external, internal }) => {
               const cls = "group flex h-full min-h-52 flex-col justify-between border-r border-b border-line p-6 transition-colors duration-500 hover:bg-navy hover:text-white sm:p-8";
               const inner = (

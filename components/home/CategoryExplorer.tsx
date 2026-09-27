@@ -17,19 +17,19 @@ const layout: { span: string; size: "lg" | "md" | "sm" }[] = [
   { span: "lg:col-span-7", size: "lg" },
 ];
 
-export function CategoryExplorer({ limit }: { limit?: number }) {
+export function CategoryExplorer({ limit, index = "02" }: { limit?: number; index?: string }) {
   const list = limit ? categories.slice(0, limit) : categories;
   return (
-    <section aria-labelledby="explorer-title" className="bg-paper py-20 md:py-36">
+    <section aria-labelledby="explorer-title" className="bg-ivory py-14 md:py-20">
       <div className="container-x">
         <SectionHead
-          index="04"
+          index={index}
           label="Category explorer"
           title={<span id="explorer-title">Engineered for every framework.</span>}
           intro="Each family opens into its own specification pages — grades, standards, applications and the brands we can supply."
         />
 
-        <div className="mt-16 grid gap-3 sm:grid-cols-2 md:mt-24 lg:grid-cols-12 lg:gap-4">
+        <div className="mt-10 grid gap-3 sm:grid-cols-2 md:mt-12 lg:grid-cols-12 lg:gap-4">
           {list.map((c, i) => {
             const l = layout[i % layout.length];
             return (
@@ -40,7 +40,7 @@ export function CategoryExplorer({ limit }: { limit?: number }) {
           })}
         </div>
 
-        <div className="mt-14 flex justify-center">
+        <div className="mt-10 flex justify-center">
           <LinkButton href="/products" variant="solid" magnetic>
             Open the full catalogue
           </LinkButton>

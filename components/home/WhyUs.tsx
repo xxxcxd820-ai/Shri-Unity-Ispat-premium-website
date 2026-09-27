@@ -46,7 +46,7 @@ export function WhyUs({ index = "06" }: { index?: string }) {
   const listRef = useRef<HTMLOListElement>(null);
 
   return (
-    <section aria-labelledby="why-title" className="relative bg-navy py-24 text-white md:py-36">
+    <section aria-labelledby="why-title" className="relative bg-navy py-14 text-white md:py-20">
       <div className="bg-blueprint-dark pointer-events-none absolute inset-0" aria-hidden="true" />
       <div className="container-x relative">
         <SectionHead
@@ -57,7 +57,7 @@ export function WhyUs({ index = "06" }: { index?: string }) {
           intro="What a steel supplier should be: dependable on specification, clear on availability and easy to work with."
         />
 
-        <div className="mt-16 grid gap-12 md:mt-24 lg:grid-cols-12">
+        <div className="mt-10 grid gap-10 md:mt-12 lg:grid-cols-12">
           <div className="relative hidden lg:col-span-5 lg:block">
             <div className="sticky top-[calc(var(--header-h)+2rem)] aspect-[4/5] overflow-hidden">
               <AnimatePresence mode="popLayout" initial={false}>
@@ -88,7 +88,7 @@ export function WhyUs({ index = "06" }: { index?: string }) {
                   onFocus={() => setActive(i)}
                   onClick={() => setActive(i)}
                   aria-pressed={active === i}
-                  className="group grid w-full grid-cols-[3.5rem_1fr] gap-4 py-8 text-left md:grid-cols-[5rem_1fr] md:py-10"
+                  className="group grid w-full grid-cols-[3.5rem_1fr] gap-4 py-6 text-left md:grid-cols-[5rem_1fr] md:py-7"
                 >
                   <span className={cn("label pt-2 transition-colors duration-500", active === i ? "text-gold-soft" : "text-white/40")}>
                     {String(i + 1).padStart(2, "0")}

@@ -37,7 +37,7 @@ export default function ProductsPage() {
         crumbs={[{ name: "Products", path: "/products" }]}
       />
 
-      <section aria-label="Search and filter products" className="bg-paper py-16 md:py-24">
+      <section aria-label="Search and filter products" className="bg-paper py-12 md:py-16">
         <div className="container-x">
           <Suspense fallback={<div className="h-40" />}>
             <Catalogue />
@@ -45,14 +45,14 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      <section aria-labelledby="families-title" className="bg-ivory py-20 md:py-32">
+      <section aria-labelledby="families-title" className="bg-ivory py-14 md:py-20">
         <div className="container-x">
           <SectionHead
             label="Browse by family"
             title={<span id="families-title">Product families.</span>}
             intro="Each family has its own landing page with applications, brands and every product in the range."
           />
-          <div className="mt-14 grid gap-3 sm:grid-cols-2 lg:grid-cols-12 lg:gap-4">
+          <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-12 lg:gap-4">
             {categories.map((c, i) => {
               const span = spans[i % spans.length];
               const size = span.includes("7") ? "lg" : span.includes("5") ? "md" : "sm";

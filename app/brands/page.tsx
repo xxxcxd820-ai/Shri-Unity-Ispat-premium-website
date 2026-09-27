@@ -72,14 +72,14 @@ export default function BrandsPage() {
       </section>
 
       {/* Statement + process */}
-      <section aria-labelledby="specify-title" className="bg-paper py-20 md:py-32">
+      <section aria-labelledby="specify-title" className="bg-paper py-14 md:py-20">
         <div className="container-x">
           <SectionHead
             label="Brand sourcing"
             title={<span id="specify-title">Specify the brand. We&rsquo;ll source it.</span>}
             intro="Consultants and clients often name a mill or brand. We make that simple — and tell you straight when an alternative will serve better."
           />
-          <ol className="mt-14 grid gap-px bg-line md:grid-cols-3">
+          <ol className="mt-10 grid gap-px bg-line md:grid-cols-3">
             {process.map((p, i) => (
               <li key={p.n} className="bg-paper">
                 <Reveal delay={i * 0.08} className="group h-full p-7 transition-colors duration-500 hover:bg-navy sm:p-10">
@@ -94,28 +94,28 @@ export default function BrandsPage() {
       </section>
 
       {/* Directory */}
-      <section id="directory" aria-labelledby="directory-title" className="scroll-mt-20 bg-ivory py-20 md:py-32">
+      <section id="directory" aria-labelledby="directory-title" className="scroll-mt-20 bg-ivory py-14 md:py-20">
         <div className="container-x">
           <SectionHead
             label="Brand directory"
             title={<span id="directory-title">The brands &amp; their lines.</span>}
             intro="Availability of a given brand depends on product, size and timing. Mention your preference when requesting a quote."
           />
-          <div className="mt-14 md:mt-20">
+          <div className="mt-10 md:mt-12">
             <BrandShowcase rows={rows} />
           </div>
         </div>
       </section>
 
       {/* Matrix */}
-      <section aria-labelledby="matrix-title" className="bg-paper py-20 md:py-32">
+      <section aria-labelledby="matrix-title" className="bg-paper py-14 md:py-20">
         <div className="container-x">
           <SectionHead
             label="At a glance"
             title={<span id="matrix-title">Brand × product family.</span>}
             intro="Which brands we deal in for each product family. Scroll sideways on smaller screens."
           />
-          <div className="mt-12 overflow-x-auto border border-line">
+          <div className="mt-10 overflow-x-auto border border-line">
             <table className="w-full min-w-[46rem] text-left text-sm">
               <caption className="sr-only">Brands we deal in by product family</caption>
               <thead>

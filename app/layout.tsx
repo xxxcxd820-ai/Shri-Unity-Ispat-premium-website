@@ -7,9 +7,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { FloatingCta } from "@/components/layout/FloatingCta";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
-import { Cursor } from "@/components/layout/Cursor";
 import { PageTransition } from "@/components/layout/PageTransition";
-import { Preloader } from "@/components/layout/Preloader";
 import { RevealObserver } from "@/components/layout/RevealObserver";
 import { MotionProvider } from "@/components/layout/MotionProvider";
 
@@ -84,8 +82,8 @@ export const viewport: Viewport = {
   viewportFit: "cover",
 };
 
-/** Runs before paint: skip the intro on repeat visits within a session. */
-const introScript = `document.documentElement.classList.add("js");try{if(sessionStorage.getItem("sui-intro"))document.documentElement.classList.add("intro-skip")}catch(e){}`;
+/** Runs before paint: marks JS as available so scroll reveals can start hidden. */
+const introScript = `document.documentElement.classList.add("js")`;
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
@@ -107,13 +105,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           Skip to content
         </a>
         <MotionProvider>
-          <Preloader />
           <ScrollProgress />
           <Navbar />
           <main id="main">{children}</main>
           <Footer />
           <FloatingCta />
-          <Cursor />
           <PageTransition />
           <RevealObserver />
         </MotionProvider>

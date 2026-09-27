@@ -21,7 +21,7 @@ export function Footer() {
 
       <div className="container-x relative">
         {/* CTA band */}
-        <div className="grid gap-7 border-b border-white/10 py-12 md:gap-10 md:py-24 lg:grid-cols-12 lg:items-end">
+        <div className="grid gap-7 border-b border-white/10 py-12 md:gap-10 md:py-16 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-8">
             <p className="label mb-4 text-gold-soft md:mb-6">Start a requirement</p>
             <p className="font-display text-[clamp(1.9rem,6vw,5.5rem)] leading-[0.95] text-white uppercase">

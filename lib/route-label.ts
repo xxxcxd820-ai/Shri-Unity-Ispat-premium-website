@@ -1,26 +1,3 @@
-"use client";
-
-/**
- * Coordinates the first-visit preloader with page intro animations.
- * The preloader marks <html data-intro="done"> and fires "intro:done";
- * components call onIntroDone() to start their entrance timelines.
- */
-export function onIntroDone(cb: () => void) {
-  if (typeof window === "undefined") return () => {};
-  if (document.documentElement.dataset.intro === "done") {
-    cb();
-    return () => {};
-  }
-  const handler = () => cb();
-  window.addEventListener("intro:done", handler, { once: true });
-  return () => window.removeEventListener("intro:done", handler);
-}
-
-export function markIntroDone() {
-  document.documentElement.dataset.intro = "done";
-  window.dispatchEvent(new Event("intro:done"));
-}
-
 /** Pretty label for a route, used by the page-transition curtain. */
 const ACRONYMS = new Set(["ms", "gi", "gp", "tmt", "ss", "hr", "cr", "erw", "shs", "rhs", "chs", "ismb", "ismc", "islc", "iswb", "ppgi", "ppgl", "en"]);
 const TOP: Record<string, string> = {

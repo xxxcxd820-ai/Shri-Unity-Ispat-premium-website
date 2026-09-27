@@ -3,7 +3,7 @@
 import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { gsap } from "@/lib/gsap";
-import { routeLabel } from "@/lib/intro";
+import { routeLabel } from "@/lib/route-label";
 import { LogoMark } from "./Logo";
 
 /**
